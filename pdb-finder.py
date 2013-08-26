@@ -42,7 +42,7 @@ except ImportError:
         def createLock(self):
             self.lock = None
 
-log = logging.getLogger('Sublime-pdb-finder')
+log = logging.getLogger('sublime-pdb-finder')
 log.handlers = [] ## hack to prevent extraneous handlers on ST2 auto-reload
 log.addHandler(NullHandler())
 log.setLevel(logging.INFO)
@@ -109,7 +109,7 @@ class PdbFinderExtractor(object):
         self.file_counter = file_counter
         self.ignored_dirs = ignored_dirs
         self.ignored_files = ignored_file_patterns
-        self.log = logging.getLogger('Sublime-pdb-finder.extractor')
+        self.log = logging.getLogger('sublime-pdb-finder.extractor')
 
     def iter_files(self):
         """"""
@@ -262,7 +262,7 @@ class PdbFinderRenderer(object):
         result_view.settings().set('result_regions', d_)
 
         ## Set syntax and settings
-        result_view.set_syntax_file('Packages/Sublime-pdb-finder/pdb_results.hidden-tmLanguage')
+        result_view.set_syntax_file('Packages/sublime-pdb-finder/pdb_results.hidden-tmLanguage')
         result_view.settings().set('line_padding_bottom', 2)
         result_view.settings().set('line_padding_top', 2)
         result_view.settings().set('word_wrap', False)
@@ -292,7 +292,7 @@ class FileScanCounter(object):
     def __init__(self):
         self.ct = 0
         self.lock = threading.RLock()
-        self.log = logging.getLogger('Sublime-pdb-finder')
+        self.log = logging.getLogger('sublime-pdb-finder')
 
     def __call__(self, filepath):
         self.log.debug(u'Scanning %s' % filepath)
@@ -388,7 +388,7 @@ class ClearSelection(sublime_plugin.TextCommand):
 
 class GotoComment(sublime_plugin.TextCommand):
     def __init__(self, *args):
-        self.log = logging.getLogger('Sublime-pdb-finder.nav')
+        self.log = logging.getLogger('sublime-pdb-finder.nav')
         super(GotoComment, self).__init__(*args)
 
     def run(self, edit):
@@ -406,7 +406,7 @@ class GotoComment(sublime_plugin.TextCommand):
 
 class MouseGotoComment(sublime_plugin.TextCommand):
     def __init__(self, *args):
-        self.log = logging.getLogger('Sublime-pdb-finder.nav')
+        self.log = logging.getLogger('sublime-pdb-finder.nav')
         super(MouseGotoComment, self).__init__(*args)
 
     def highlight(self, region):

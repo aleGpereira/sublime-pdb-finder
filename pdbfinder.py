@@ -321,6 +321,7 @@ class PdbFinderCommand(sublime_plugin.TextCommand):
         )
 
     def run(self, edit, open_files_only=False):
+        import pdb;pdb.set_trace()
         window = self.view.window()
         settings = Settings(self.view.settings().get('pdb', {}))
 

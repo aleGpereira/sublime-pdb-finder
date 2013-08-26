@@ -1,10 +1,10 @@
 [
     {
-        "caption": "Show PDBs: Project and open files",
+        "caption": "Find PDBs: Project and open files",
         "command": "pdbfinder"
     },
     {
-        "caption": "Show PDBs: Open files only",
+        "caption": "Find PDBs: Open files only",
         "command": "pdbfinder", "args": {"open_files_only": true}
     }
 ]

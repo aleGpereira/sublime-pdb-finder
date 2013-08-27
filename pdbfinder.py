@@ -99,7 +99,7 @@ class ThreadProgress(object):
 
 
 
-class PdbFinderExtractor(object):
+class PdbfinderExtractor(object):
     def __init__(self, settings, filepaths, dirpaths, ignored_dirs, ignored_file_patterns, 
                  file_counter):
         self.filepaths = filepaths
@@ -177,7 +177,7 @@ class PdbFinderExtractor(object):
                     f.close()
 
 
-class PdbFinderRenderer(object):
+class PdbfinderRenderer(object):
     def __init__(self, settings, window, file_counter):
         self.window = window
         self.settings = settings
@@ -262,7 +262,7 @@ class PdbFinderRenderer(object):
         result_view.settings().set('result_regions', d_)
 
         ## Set syntax and settings
-        result_view.set_syntax_file('Packages/sublime-pdb-finder/pdb-results.hidden-tmLanguage')
+        result_view.set_syntax_file('Packages/sublime-pdb-finder/pdbfinder-results.hidden-tmLanguage')
         result_view.settings().set('line_padding_bottom', 2)
         result_view.settings().set('line_padding_top', 2)
         result_view.settings().set('word_wrap', False)
@@ -311,7 +311,7 @@ class FileScanCounter(object):
             self.ct = 0
 
 
-class PdbFinderCommand(sublime_plugin.TextCommand):
+class PdbfinderCommand(sublime_plugin.TextCommand):
 
     def search_paths(self, window, open_files_only=False):
         """Return (filepaths, dirpaths)"""
@@ -322,7 +322,8 @@ class PdbFinderCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, open_files_only=False):
         window = self.view.window()
-        settings = Settings(self.view.settings().get('pdbfinder', {}))
+        settings = Settings(self.view.settings().get('pdb', {}))
+        
 
 
         ## TODO: Cleanup this init code. Maybe move it to the settings object
@@ -340,9 +341,9 @@ class PdbFinderCommand(sublime_plugin.TextCommand):
         exclude_file_patterns = [fnmatch.translate(patt) for patt in exclude_file_patterns]
 
         file_counter = FileScanCounter()
-        extractor = PdbFinderExtractor(settings, filepaths, dirpaths, ignored_dirs, 
+        extractor = PdbfinderExtractor(settings, filepaths, dirpaths, ignored_dirs, 
                                   exclude_file_patterns, file_counter)
-        renderer = PdbFinderRenderer(settings, window, file_counter)
+        renderer = PdbfinderRenderer(settings, window, file_counter)
 
         worker_thread = WorkerThread(extractor, renderer)
         worker_thread.start()

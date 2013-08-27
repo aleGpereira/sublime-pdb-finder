@@ -1,0 +1,12 @@
+{
+    "schema_version": "0.1",
+    "packages": [
+        {
+            "name": "SublimePdbFinder",
+            "description": "Extract PDB lines from open files and project folders",
+            "author": "Alejandro Pereira",
+            "homepage": "https://github.com/robcowie/sublime-pdb-finder",
+            "last_modified": "2013-08-27 16:40:00"
+        }
+    ]
+}

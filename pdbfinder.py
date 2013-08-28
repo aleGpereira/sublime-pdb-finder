@@ -20,7 +20,7 @@ DEFAULT_SETTINGS = {
     'result_title': 'PDBs Results',
 
     'core_patterns': {
-        'PDB': r'import[\s]+pdb[\s]*;[\s]*pdb\.set_trace\(\)',
+        'PDB': r'import[\s]*?pdb[\s]*;[\s]*pdb\.set_trace(?P<todo>.*)$',
     },
 
     'patterns': {}
@@ -322,9 +322,7 @@ class PdbfinderCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, open_files_only=False):
         window = self.view.window()
-        settings = Settings(self.view.settings().get('pdb', {}))
-        
-
+        settings = Settings(self.view.settings().get('pdbfinder', {}))
 
         ## TODO: Cleanup this init code. Maybe move it to the settings object
         filepaths, dirpaths = self.search_paths(window, open_files_only=open_files_only)

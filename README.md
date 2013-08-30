@@ -1,4 +1,4 @@
-Sublime PDBs Finder
+Sublime PDB Finder
 ===================
 
 A Sublime Text 2 plugin to extract and list PDB lines from open files and 
@@ -119,6 +119,11 @@ Results can be navigated by keyboard and mouse:
 
  Note that due to the lack of support for context in mousemaps right now,
  alt-double click will trigger in _any_ document, though it should be a no-op.
+
+VERY IMPORTANT NOTE
+-------------------
+
+Sublime PDB Finder has been inherited from **[SublimeTODO](https://robcowie@github.com/robcowie/SublimeTODO.git)** by his author **[Rob Cowie](https://github.com/robcowie)**. I really liked that tool. So thanks to him too!!.
 
 License
 -------

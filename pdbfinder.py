@@ -175,7 +175,6 @@ class PdbfinderExtractor(object):
                     for mo in patt.finditer(line):
                         ## Remove the non-matched groups
                         matches = [Message(msg_type, next_pdb_line[1]) for msg_type, msg in mo.groupdict().iteritems()]
-                        print matches
                         for match in matches:
                             yield {'filepath': filepath, 'linenum': linenum + 1, 'match': match}
             except IOError:

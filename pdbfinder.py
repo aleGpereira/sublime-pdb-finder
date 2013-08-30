@@ -20,7 +20,7 @@ DEFAULT_SETTINGS = {
     'result_title': 'PDBs Results',
 
     'core_patterns': {
-        'PDB': r'import[\s]*?pdb[\s]*;[\s]*pdb\.set_trace(?P<todo>.*)$',
+        'PDB': r'(?P<pdb>import[\s]*pdb[\s]*;[\s]*pdb\.set_trace\(\).*)$',
     },
 
     'patterns': {}
@@ -162,10 +162,20 @@ class PdbfinderExtractor(object):
             try:
                 f = open(filepath)
                 self.log.debug(u'Scanning {0}'.format(filepath))
+
+                # Second reader to know the next line if there is one.
+                dummy_f = open(filepath)
+                enum_file = enumerate(dummy_f)
+                dummy_line = enum_file.next()
                 for linenum, line in enumerate(f):
+                    try:
+                        next_pdb_line = enum_file.next()
+                    except StopIteration:
+                        next_pdb_line = (None, '')
                     for mo in patt.finditer(line):
                         ## Remove the non-matched groups
-                        matches = [Message(msg_type, msg) for msg_type, msg in mo.groupdict().iteritems() if msg]
+                        matches = [Message(msg_type, next_pdb_line[1]) for msg_type, msg in mo.groupdict().iteritems()]
+                        print matches
                         for match in matches:
                             yield {'filepath': filepath, 'linenum': linenum + 1, 'match': match}
             except IOError:
@@ -225,7 +235,7 @@ class PdbfinderRenderer(object):
                 for idx, m in enumerate(matches, 1):
                     msg = m['match'].msg.decode('utf8', 'ignore') ## Don't know the file encoding
                     filepath = path.basename(m['filepath'])
-                    line = u"{idx}. {filepath}:{linenum} {msg}".format(
+                    line = u"{idx}. {filepath}:{linenum} --> next line: {msg}".format(
                         idx=idx, filepath=filepath, linenum=m['linenum'], msg=msg)
                     yield ('result', line, m)
 
@@ -254,10 +264,6 @@ class PdbfinderRenderer(object):
 
         result_view.add_regions('results', regions.keys(), '')
 
-        ## Store {Region : data} map in settings
-        ## TODO: Abstract this out to a storage class Storage.get(region) ==> data dict
-        ## Region() cannot be stored in settings, so convert to a primitive type
-        # d_ = regions
         d_ = dict(('{0},{1}'.format(k.a, k.b), v) for k, v in regions.iteritems())
         result_view.settings().set('result_regions', d_)
 

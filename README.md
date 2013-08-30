@@ -123,7 +123,7 @@ Results can be navigated by keyboard and mouse:
 VERY IMPORTANT NOTE
 -------------------
 
-Sublime PDB Finder has been inherited from **[SublimeTODO](https://robcowie@github.com/robcowie/SublimeTODO.git)** by his author **[Rob Cowie](https://github.com/robcowie)**. I really liked that tool. So thanks to him too!!.
+Sublime PDB Finder has been inherited from **[SublimeTODO](https://github.com/robcowie/SublimeTODO)** by his author **[Rob Cowie](https://github.com/robcowie)**. I really liked that tool. So thanks to him too!!.
 
 License
 -------

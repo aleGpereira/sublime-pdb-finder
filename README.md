@@ -113,9 +113,12 @@ Usage
 Both are triggered from the command palette. No default key bindings are provided.
 
 If we have results, a list is going to be show with:
-    * The file name
-    * Te line in wich that pdb can be found.
-    * The content of the next line, if we have one. If not, EOF is shown.
+
+* The file name.
+
+* The line in wich that pdb can be found.
+
+* The content of the next line, if we have one. If not, EOF is shown.
 
 Navigating results
 __________________

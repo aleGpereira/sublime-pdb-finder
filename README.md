@@ -1,7 +1,7 @@
 Sublime PDB Finder
 ===================
 
-A Sublime Text 2 plugin to extract and list PDB lines from open files and 
+A Sublime Text 2 plugin to extract and list Python PDB lines from open files and 
 project folders.
 
 Install
@@ -48,11 +48,12 @@ __________
     },
 
 
-Adding comment patterns
------------------------
+Adding patterns
+---------------
 
 Extraction uses regular expressions that return one match group 
-representing the message. Default patterns are provided for *PDB* comments.
+representing the message. Since this plugin is set to search for Python pdb's,
+you can add patterns to provide *PDB* lines in some other language.
 To override or provide more patterns, add `patterns` to user settings, e.g.
 
     "patterns": {
@@ -105,9 +106,16 @@ Override the results view title by setting `result_title`
 Usage
 -----
 
-*Show PDBs: Project and open files* scans all files in your project
-*Show PDBs: Open files only* scans only open, saved files
+* *Find PDBs: Project and open files* scans all files in your project.
+
+* *Find PDBs: Open files only* scans only open, saved files.
+
 Both are triggered from the command palette. No default key bindings are provided.
+
+If we have results, a list is going to be show with:
+    * The file name
+    * Te line in wich that pdb can be found.
+    * The content of the next line, if we have one. If not, EOF is shown.
 
 Navigating results
 __________________
@@ -117,8 +125,8 @@ Results can be navigated by keyboard and mouse:
  * **n** ext, **p** revious, **c** lear, **enter**
  * **alt-double click** (**shift-double click** in Linux)
 
- Note that due to the lack of support for context in mousemaps right now,
- alt-double click will trigger in _any_ document, though it should be a no-op.
+Note that due to the lack of support for context in mousemaps right now,
+alt-double click will trigger in _any_ document, though it should be a no-op.
 
 VERY IMPORTANT NOTE
 -------------------

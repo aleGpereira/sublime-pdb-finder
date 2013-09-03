@@ -278,7 +278,7 @@ class PdbfinderRenderer(object):
 
         # Set syntax and settings
         result_view.set_syntax_file(
-            'Packages/sublime-pdb-finder/pdbfinder-results.hidden-tmLanguage')
+            'Packages/PDB Finder/pdbfinder-results.hidden-tmLanguage')
         result_view.settings().set('line_padding_bottom', 2)
         result_view.settings().set('line_padding_top', 2)
         result_view.settings().set('word_wrap', False)

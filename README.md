@@ -7,7 +7,10 @@ project folders.
 Install
 -------
 
-The preferred method is to use the [Sublime Package Manager](http://wbond.net/sublime_packages/package_control). Alternatively, checkout from github:
+The preferred method is to use the [Sublime Package Manager](http://wbond.net/sublime_packages/package_control). Once you have Package Control installed,
+just search for *PDB Finder*.
+
+Alternatively, checkout from github:
 
 
     $ cd Sublime Text 2/Packages
